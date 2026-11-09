@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UDITflix | Pipeline de transcodificación</title>
+    <link rel="stylesheet" href="/estilos.css">
+</head>
+<body>
+    <main class="panel">
+        <header class="cabecera">
+            <a class="marca" href="/" aria-label="UDITflix inicio"><span>U</span>DITFLIX</a>
+        </header>
+
+        <section class="intro">
+            <h1>Tu contenido,<br><em>listo para reproducir.</em></h1>
+            <p class="descripcion">Compara el rendimiento del pipeline ejecutando las tareas en serie o en paralelo.</p>
+            <div class="acciones">
+                <button id="secuencial" class="boton boton-secundario">▶ Procesar en secuencial</button>
+                <button id="concurrente" class="boton boton-principal">⇉ Procesar en concurrente</button>
+            </div>
+            <p id="aviso" class="aviso" role="status">Selecciona un modo para iniciar la transcodificación.</p>
+        </section>
+
+        <section class="contenido">
+            <div class="titulo-seccion">
+                <div>
+                    <p class="etiqueta">PIPELINE EN TIEMPO REAL</p>
+                    <h2>Cola de transcodificación</h2>
+                </div>
+                <span id="modo-actual" class="insignia">EN ESPERA</span>
+            </div>
+            <div id="videos" class="videos"></div>
+        </section>
+
+        <section class="resultados">
+            <div class="titulo-seccion">
+                <div>
+                    <p class="etiqueta">COMPARATIVA</p>
+                    <h2>Resultados de ejecución</h2>
+                </div>
+            </div>
+            <div class="metricas">
+                <article class="metrica"><span>Secuencial</span><strong id="tiempo-secuencial">—</strong></article>
+                <article class="metrica"><span>Concurrente</span><strong id="tiempo-concurrente">—</strong></article>
+                <article class="metrica"><span>Tiempo ahorrado</span><strong id="ahorro">—</strong></article>
+                <article class="metrica metrica-destacada"><span>Mejora</span><strong id="mejora">—</strong></article>
+            </div>
+        </section>
+    </main>
+    <script src="/app.js"></script>
+</body>
+</html>

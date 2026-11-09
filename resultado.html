@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UDITflix - Resultados</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #101522;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .contenedor {
+            width: 100%;
+            max-width: 850px;
+            background: #1c2538;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px #0008;
+        }
+
+        h1 {
+            color: #60a5fa;
+            margin-bottom: 5px;
+        }
+
+        .subtitulo {
+            color: #aab5c8;
+            margin-bottom: 30px;
+        }
+
+        .estado {
+            background: #123d32;
+            color: #6ee7b7;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .resultados {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .tarjeta {
+            background: #28354c;
+            padding: 22px;
+            border-radius: 12px;
+        }
+
+        .tarjeta p {
+            color: #aab5c8;
+            margin: 0 0 12px;
+        }
+
+        .tarjeta h2 {
+            font-size: 27px;
+            margin: 0;
+        }
+
+        .verde {
+            color: #6ee7b7;
+        }
+
+        .videos {
+            margin-top: 30px;
+        }
+
+        .videos li {
+            list-style: none;
+            background: #28354c;
+            margin: 8px 0;
+            padding: 13px;
+            border-radius: 8px;
+        }
+
+        .pie {
+            margin-top: 30px;
+            text-align: center;
+            color: #8190a8;
+        }
+
+        @media (max-width: 600px) {
+            .resultados {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <h1>🎬 UDITflix</h1>
+        <p class="subtitulo">Panel de rendimiento de transcodificación</p>
+
+        <div class="estado">
+            ✓ Todos los vídeos han terminado correctamente
+        </div>
+
+        <div class="resultados">
+
+            <div class="tarjeta">
+                <p>Tiempo secuencial</p>
+                <h2 id="secuencial">--</h2>
+            </div>
+
+            <div class="tarjeta">
+                <p>Tiempo concurrente</p>
+                <h2 id="concurrente">--</h2>
+            </div>
+
+            <div class="tarjeta">
+                <p>Tiempo ahorrado</p>
+                <h2 class="verde" id="ahorro">--</h2>
+            </div>
+
+            <div class="tarjeta">
+                <p>Mejora de rendimiento</p>
+                <h2 class="verde" id="porcentaje">--</h2>
+            </div>
+
+        </div>
+
+        <div class="videos">
+            <h3>Vídeos procesados</h3>
+            <ul id="listaVideos"></ul>
+        </div>
+
+        <div class="pie">
+            UDITflix · Sistema de transcodificación multihilo
+        </div>
+
+    </div>
+
+    <script>
+        const parametros = new URLSearchParams(window.location.search);
+
+        document.getElementById("secuencial").textContent =
+            parametros.get("secuencial") + " ms";
+
+        document.getElementById("concurrente").textContent =
+            parametros.get("concurrente") + " ms";
+
+        document.getElementById("ahorro").textContent =
+            parametros.get("ahorro") + " ms";
+
+        document.getElementById("porcentaje").textContent =
+            parametros.get("porcentaje") + " %";
+
+        const videos = [
+            "intro.mp4",
+            "teaser.mp4",
+            "episodio-1.mp4",
+            "creditos.mp4"
+        ];
+
+        const lista = document.getElementById("listaVideos");
+
+        videos.forEach(video => {
+            const elemento = document.createElement("li");
+            elemento.textContent = "✓ " + video;
+            lista.appendChild(elemento);
+        });
+    </script>
+
+</body>
+</html>
